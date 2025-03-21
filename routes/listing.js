@@ -1,3 +1,4 @@
+
 const express = require("express");
 const router = express.Router({mergeParams : true});
 const wrapAsync = require("../utils/wrapAsync.js");
@@ -6,6 +7,9 @@ const ExpressError = require("../utils/ExpressError.js");
 const Listing = require("../models/listing");
 const {isLoggedin,isOwner,validateListing} = require("../middleware.js");
 const listingController = require("../controllers/listings.js");
+const {storage} = require("../cloudConfig.js")
+const multer  = require('multer');
+const upload = multer({ storage }); //multer will save all the uploaded files to the cloudinary storage
 
 
 
@@ -13,7 +17,7 @@ const listingController = require("../controllers/listings.js");
 router.route("/")
 //index route
 .get( wrapAsync(listingController.index))
-.post(validateListing ,isLoggedin, wrapAsync(listingController.createlisting));    //create route
+.post(isLoggedin,validateListing ,upload.single("listing[image]"), wrapAsync(listingController.createlisting));    //create route
 
 //instaed of app we use router, when using express router
 

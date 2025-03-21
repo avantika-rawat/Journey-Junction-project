@@ -11,13 +11,8 @@ const listingSchema= new Schema({
         type:String 
     },
     image: {
-        filename:String,
-        url:{
-            type: String,
-            default: "https://c4.wallpaperflare.com/wallpaper/464/268/977/motel-airbnb-hot-tub-planes-comic-art-hd-wallpaper-preview.jpg",
-            set: (v) =>
-                v === ""? "https://c4.wallpaperflare.com/wallpaper/464/268/977/motel-airbnb-hot-tub-planes-comic-art-hd-wallpaper-preview.jpg":v,
-           },
+      url : String,
+      filename : String,
     },
     price:Number,
     location:String,

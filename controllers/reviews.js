@@ -1,8 +1,9 @@
 const Reviews = require("../models/review");
+const Listing = require('../models/listing'); // Adjust the path if needed
 
 module.exports.createReview = async (req,res)=>{
     let listing = await Listing.findById(req.params.id);
-    let newReview = new Review(req.body.review);
+    let newReview = new Reviews(req.body.review);
     newReview.author = req.user._id;
     listing.reviews.push(newReview);
     

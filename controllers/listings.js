@@ -3,7 +3,6 @@ const Listing = require("../models/listing");
 
 module.exports.index = async (req,res)=>{
     const allListings =  await Listing.find({});
-
      res.render("listings/index.ejs", {allListings});
    }
 
@@ -30,10 +29,13 @@ module.exports.showlisting = async(req, res)=>{
       //     throw new ExpressError(400,"send valid data for listing");
       // }
       
-      
+      let url = req.file.path;
+      let filename = req.file.filename;
       let listing = req.body.listing;
       const newListing = new Listing(listing);
       newListing.owner =req.user._id;
+      newListing.image = {filename,url};
+      
       await newListing.save();
       req.flash("success", "New Listing added");
       res.redirect("/listings");
@@ -71,6 +73,5 @@ module.exports.showlisting = async(req, res)=>{
                 let deleteListing = await Listing.findByIdAndDelete(id);
                 console.log(deleteListing);
                 req.flash("success", "Listing Deleted");
-             
                 res.redirect("/listings");
                 }
