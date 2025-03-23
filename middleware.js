@@ -51,10 +51,12 @@ module.exports.isReviewAuthor = async(req,res,next)=>{
 
 module.exports.validateListing = (req,res,next)=>{
     //since we cannot validate every field of schema model, we use a tool called joi
+    console.log("Request body:", req.body);
+
     let {error} = listingSchema.validate(req.body);
     if(error){
         let errMsg = error.details.map((el)=>el.message).join(",");
-        throw new ExpressError(400, error);
+        throw new ExpressError(400, errMsg);
     }else{
         next();
     }
