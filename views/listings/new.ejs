@@ -31,7 +31,7 @@
 
 <div class="mb-3">
     <label for="image" class="form-label">Upload Listing Image</label>
-    <input name="listing[image]" type="file" class="form-control"/>
+    <input name="listing[image]" type="file" class="form-control" required/>
     <div class="valid-feedback">
         Default image will be set, if not added.
       </div>
@@ -40,7 +40,7 @@
 
 <div class="row">
     <div class="mb-3 col-md-4">
-        <label for="price" class="form-label">1200</label>
+        <label for="price" class="form-label">Price</label>
         <input name="listing[price]" placeholder="enter price" class="form-control" required/>
         <div  class="invalid-feedback">
             Please add price.
@@ -59,7 +59,8 @@
 </div>
 
 
-<div class="mb-3">Location</label>
+<div class="mb-3">
+    <label for="location" class="form-label">Location</label>
     <input name="listing[location]" placeholder="Dehradun" type="text" class="form-control" required/>
     <div  class="invalid-feedback">
         Enter a valid location.
