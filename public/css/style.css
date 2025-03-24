@@ -140,3 +140,7 @@ body{
 }
 
 
+#map{
+    width: 80vh;
+    height: 400px;
+}

@@ -17,7 +17,7 @@ const upload = multer({ storage }); //multer will save all the uploaded files to
 router.route("/")
 //index route
 .get( wrapAsync(listingController.index))
-.post(isLoggedin,validateListing ,upload.single("listing[image]"), wrapAsync(listingController.createlisting));    //create route
+.post(isLoggedin,upload.single("listing[image]"),validateListing , wrapAsync(listingController.createlisting));    //create route
 
 //instaed of app we use router, when using express router
 
@@ -26,12 +26,9 @@ router.route("/")
 
 
 router.route("/:id")
-.put(validateListing,isLoggedin,isOwner, wrapAsync(listingController.updateListing)) //update route
+.put(isLoggedin,isOwner,upload.single("listing[image]"), validateListing,wrapAsync(listingController.updateListing)) //update route
 .get( wrapAsync(listingController.showlisting))  //show route a specific
 .delete(isLoggedin, wrapAsync(listingController.deleteListing));    //delete route
-
-
-
 
 
 
