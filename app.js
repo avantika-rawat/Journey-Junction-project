@@ -65,9 +65,9 @@ const sessionOptions = {
 };
 
 
-app.get("/" , (req, res)=>{
-    res.send("THIS IS AN ONGOING PROJECT, CHECK THE OTHERS OUT");
-});
+// app.get("/" , (req, res)=>{
+//     res.send("THIS IS AN ONGOING PROJECT, CHECK THE OTHERS OUT");
+// });
 
 app.use(session(sessionOptions));
 app.use(flash());
@@ -95,18 +95,18 @@ app.use("/listings", listingsRouter);
 app.use("/listings/:id/reviews", reviewsRouter);
 app.use("/", userRouter);
 
-// //for all routes
-// app.all("*",(req,res,next)=>{
-//     next(new ExpressError(404,"Page not found"));
-// });
+//for all routes
+app.all("*",(req,res,next)=>{
+    next(new ExpressError(404,"Page not found"));
+});
 
-// //error handler
-// app.use((err,req,res,next)=>{
-//     let {statusCode=500, message="something went wrong!"} = err;
-//     res.status(statusCode).render("error.ejs",{message});
-//     // res.status(statusCode).send(message);
-//     // res.send("SOMETHING WENT WRONG!");
-// });
+//error handler
+app.use((err,req,res,next)=>{
+    let {statusCode=500, message="something went wrong!"} = err;
+    res.status(statusCode).render("error.ejs",{message});
+    // res.status(statusCode).send(message);
+    // res.send("SOMETHING WENT WRONG!");
+});
 
 
 
