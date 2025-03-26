@@ -6,7 +6,7 @@ if(process.env.NODE_ENV!="production"){
 
 const express = require("express");
 const app = express();
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 const path =require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate"); //helps creating different layouts
@@ -27,19 +27,38 @@ const reviewsRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/journeyJunction";
+// const MONGO_URL = "mongodb://127.0.0.1:27017/journeyJunction";
+// const dbUrl = process.env.ATLASDB_URL;
 
-main().then(() =>{
-    console.log("connected to database");
-})
-.catch((err)=>{
-console.log(err);
-});
+// main().then(() =>{
+//     console.log("connected to database");
+// })
+// .catch((err)=>{
+// console.log(err);
+// });
 
+
+// async function main() {
+//     await mongoose.connect(dbUrl);
+// }
+
+const mongoose = require("mongoose");
+
+const MONGO_URL = "mongodb://127.0.0.1:27017/journeyJunction"; // Use 127.0.0.1 instead of 'localhost'
 
 async function main() {
-    await mongoose.connect(MONGO_URL)
+    try {
+        await mongoose.connect(MONGO_URL, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        console.log("Connected to MongoDB");
+    } catch (error) {
+        console.error("MongoDB Connection Error:", error);
+    }
 }
+
+main();
 
 
 app.set("view engine", "ejs");
@@ -54,7 +73,7 @@ app.use(express.static(path.join(__dirname,"/public")));
 
 
 const sessionOptions = {
-    secret : "mysuperseceretcode",
+    secret : process.env.SECRET,
     resave:false,
     saveUninitialized : true,
     cookies : {
@@ -64,10 +83,6 @@ const sessionOptions = {
     },
 };
 
-
-// app.get("/" , (req, res)=>{
-//     res.send("THIS IS AN ONGOING PROJECT, CHECK THE OTHERS OUT");
-// });
 
 app.use(session(sessionOptions));
 app.use(flash());
@@ -96,20 +111,20 @@ app.use("/listings/:id/reviews", reviewsRouter);
 app.use("/", userRouter);
 
 //for all routes
-app.all("*",(req,res,next)=>{
-    next(new ExpressError(404,"Page not found"));
-});
+// app.all("*",(req,res,next)=>{
+//     next(new ExpressError(404,"Page not found"));
+// });
 
-//error handler
-app.use((err,req,res,next)=>{
-    let {statusCode=500, message="something went wrong!"} = err;
-    res.status(statusCode).render("error.ejs",{message});
-    // res.status(statusCode).send(message);
-    // res.send("SOMETHING WENT WRONG!");
-});
+// //error handler
+// app.use((err,req,res,next)=>{
+//     let {statusCode=500, message="something went wrong!"} = err;
+//     res.status(statusCode).render("error.ejs",{message});
+//     // res.status(statusCode).send(message);
+//     // res.send("SOMETHING WENT WRONG!");
+// });
 
 
 
-app.listen(8080, ()=>{
+app.listen(3000, ()=>{
     console.log("listening at port 8080");
 });
