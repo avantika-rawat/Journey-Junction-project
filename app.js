@@ -101,7 +101,9 @@ app.use((req,res,next)=>{
 
 
 
-
+app.get("/",(req,res,next)=>{
+    res.redirect("/listings");
+})
 
 
 app.use("/listings", listingsRouter);
@@ -109,17 +111,17 @@ app.use("/listings/:id/reviews", reviewsRouter);
 app.use("/", userRouter);
 
 //for all routes
-// app.all("*",(req,res,next)=>{
-//     next(new ExpressError(404,"Page not found"));
-// });
+app.all("*",(req,res,next)=>{
+    next(new ExpressError(404,"Page not found"));
+});
 
-// //error handler
-// app.use((err,req,res,next)=>{
-//     let {statusCode=500, message="something went wrong!"} = err;
-//     res.status(statusCode).render("error.ejs",{message});
-//     // res.status(statusCode).send(message);
-//     // res.send("SOMETHING WENT WRONG!");
-// });
+//error handler
+app.use((err,req,res,next)=>{
+    let {statusCode=500, message="something went wrong!"} = err;
+    res.status(statusCode).render("error.ejs",{message});
+    // res.status(statusCode).send(message);
+    // res.send("SOMETHING WENT WRONG!");
+});
 
 
 
