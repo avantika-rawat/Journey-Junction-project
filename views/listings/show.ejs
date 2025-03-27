@@ -22,9 +22,11 @@
           <p class="card-text"><i><%=listing.description%></i></p>
           <p class="card-text"><i> &#8377;<%= (listing.price && !isNaN(listing.price)) ? listing.price.toLocaleString("en-IN") : "Price not available" %>
           </i></p>
-          <p class="card-text"><i>            <%=listing.location%>
+          <p class="card-text"><i>            
+            <%=listing.location%>
           </i></p>
-          <p class="card-text"><i>            <%=listing.country%>
+          <p class="card-text"><i>            
+            <%=listing.country%>
           </i></p>
   
         </div>
