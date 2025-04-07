@@ -10,7 +10,7 @@ Watch the demo video: **[Video Link](#)**
 ##  Live Demo
 
 
-Try the live application: **[Live Demo](#https://journey-junction-dvx9.onrender.com/listings)**  
+Try the live application: **[Live Demo](https://journey-junction-dvx9.onrender.com/listings)**  
 
 ##  Features
 
