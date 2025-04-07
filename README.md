@@ -2,15 +2,7 @@
 
 **Journey Junction** is a full-stack travel platform designed to help users seamlessly explore destinations, plan trips, and book accommodations.
 
-##  Video Showcase
-
-
-Watch the demo video: **[Video Link](#)**  
-
-##  Live Demo
-
-
-Try the live application: **[Live Demo](https://journey-junction-dvx9.onrender.com/listings)**  
+**[Live Demo](https://journey-junction-dvx9.onrender.com/listings)**  
 
 ##  Features
 
@@ -30,8 +22,4 @@ Try the live application: **[Live Demo](https://journey-junction-dvx9.onrender.c
 - **Cloud Storage:** Cloudinary  
 - **Deployment:** Render  
 
-## 🚀 Installation & Setup
 
-### Clone the repository:
-```bash
-git clone https://github.com/yourusername/journey-junction.git
