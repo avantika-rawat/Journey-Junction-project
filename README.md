@@ -8,8 +8,6 @@
 
 - 🔐 **Secure user authentication & authorization** (Passport.js)  
 - 🔍 **Explore and search travel destinations**  
-- 🏨 **Book accommodations and services**  
-- 📱 **Fully responsive UI for a smooth experience**  
 - ☁️ **Cloud-based media storage with Cloudinary**  
 - 🚀 **Deployed on Render for easy access**  
 
