@@ -4,6 +4,10 @@
 
 **[Live Demo](https://journey-junction-dvx9.onrender.com/listings)**  
 
+## Use credentials:
+Username : demo,
+Password : demo123
+
 ##  Features
 
 - 🔐 **Secure user authentication & authorization** (Passport.js)  
