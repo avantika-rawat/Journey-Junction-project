@@ -10,10 +10,10 @@ Password : demo123
 
 ##  Features
 
-- 🔐 **Secure user authentication & authorization** (Passport.js)  
-- 🔍 **Explore and search travel destinations**  
-- ☁️ **Cloud-based media storage with Cloudinary**  
-- 🚀 **Deployed on Render for easy access**  
+-  **Secure user authentication & authorization** (Passport.js)  
+-  **Explore and search travel destinations**  
+-  **Cloud-based media storage with Cloudinary**  
+-  **Deployed on Render for easy access**  
 
 ## 🛠️ Tech Stack
 
